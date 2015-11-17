@@ -88,12 +88,12 @@
       var parent = el.parentNode
       while (parent !== document.body) {
         if ((parent) && (parent.id === 'd3-tip')) {
+          el = parent
           break
         } else {
           parent = parent.parentNode
         }
       }
-      el = parent
 
       if (el !== nodel[0][0]) {
         nodel.style({ opacity: 0, 'pointer-events': 'none' })
@@ -286,7 +286,7 @@
         'pointer-events': 'none',
         'box-sizing': 'border-box'
       })
-      node.classed('d3-tip', true);
+      node.attr('id', 'd3-tip');
 
       return node.node()
     }
