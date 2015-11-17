@@ -85,13 +85,15 @@
       }
 
       // get element parents, until #d3-tip
-      var parent = el.parentNode
-      while (parent !== document.body) {
-        if ((parent) && (parent.id === 'd3-tip')) {
-          el = parent
-          break
-        } else {
-          parent = parent.parentNode
+      if (el && el.parentNode) {
+        var parent = el.parentNode
+        while (parent !== document.body) {
+          if ((parent) && (parent.id === 'd3-tip')) {
+            el = parent
+            break
+          } else {
+            parent = parent.parentNode
+          }
         }
       }
 
