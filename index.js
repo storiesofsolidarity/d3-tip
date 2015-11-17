@@ -81,6 +81,17 @@
       	el = document.elementFromPoint(d3.event.clientX, d3.event.clientY);
       }
 
+      // get element parents, until #d3-tip
+      var parent = el.parentNode
+      while (parent !== document.body) {
+        if ((parent) && (parent.id === 'd3-tip')) {
+          break
+        } else {
+          parent = parent.parentNode
+        }
+      }
+      el = parent
+
       if (el !== nodel[0][0]) {
         nodel.style({ opacity: 0, 'pointer-events': 'none' })
       }
@@ -264,6 +275,7 @@
         'pointer-events': 'none',
         'box-sizing': 'border-box'
       })
+      node.classed('d3-tip', true);
 
       return node.node()
     }
